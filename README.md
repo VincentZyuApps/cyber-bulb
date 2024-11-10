@@ -1,6 +1,12 @@
 ```bash
+python -m venv venv
 .\venv\Scripts\Activate
-source venv/bin/activate
 
 python bulb.py
+```
+
+```bash
+python3 -m venv venv-linux
+source venv-linux/bin/activate
+
 ```
