@@ -23,7 +23,7 @@ python 3.10.12
 
 # Notes
 ## ubuntu 老版本 apt 换源
-https://blog.csdn.net/weixin_65451201/article/details/135198265
+https://blog.csdn.net/xiangxianghehe/article/details/122856771
 
 ## ubuntu 24.04 apt 换源
 https://blog.csdn.net/qq_37344125/article/details/138841559
