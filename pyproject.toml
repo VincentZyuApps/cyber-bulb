@@ -1,0 +1,53 @@
+[project]
+name = "cyber-bulb"
+version = "0.1.0b1"
+description = "A PyQt5 digital clock with light and dark modes."
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [
+    { name = "VincentZyu" },
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: X11 Applications :: Qt",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+]
+dependencies = [
+    "PyQt5==5.15.11",
+    "PyQt5-Qt5==5.15.2",
+]
+
+[project.scripts]
+cyber-bulb = "cyber_bulb.app:main"
+
+[project.urls]
+Homepage = "https://github.com/VincentZyuApps/cyber-bulb"
+Repository = "https://github.com/VincentZyuApps/cyber-bulb"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[[tool.uv.index]]
+name = "pypi"
+url = "https://pypi.org/simple"
+default = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/cyber_bulb"]
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "/src/cyber_bulb",
+    "/bulb.py",
+    "/pyproject.toml",
+    "/README.md",
+    "/requirements.txt",
+    "/uv.lock",
+    "/docs/images/preview/*.png",
+]
