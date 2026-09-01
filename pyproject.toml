@@ -1,6 +1,6 @@
 [project]
 name = "cyber-bulb"
-version = "0.3.0b3"
+version = "0.3.0rc1"
 description = "A PyQt5 seven-segment clock with themes and animated display effects."
 readme = "README.md"
 requires-python = ">=3.10"

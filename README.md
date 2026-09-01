@@ -6,7 +6,7 @@
 一个使用 PyQt5 编写的七段数码管时钟，支持三种外观、响应式控制和多种段级动画。 / A PyQt5 seven-segment clock with three styles, responsive controls, and segment-level animations.
 
 ## 🖼️ 运行预览 / Preview
-
+![赛博灯泡动画演示 / Cyber Bulb animated demo](https://raw.githubusercontent.com/VincentZyuApps/cyber-bulb/main/docs/images/preview/preview.demo.gif)
 ### ☀️ 白天模式 / Light Mode
 ![赛博灯泡白天模式 / Cyber Bulb light mode](https://raw.githubusercontent.com/VincentZyuApps/cyber-bulb/main/docs/images/preview/preview.light.png)
 ### 🌙 夜晚模式 / Dark Mode
