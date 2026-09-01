@@ -1,8 +1,11 @@
 # 💡 赛博灯泡 / Cyber Bulb
 
-[![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/VincentZyuApps/cyber-bulb) [![Gitee](https://img.shields.io/badge/Gitee-C71D23?style=for-the-badge&logo=gitee&logoColor=white)](https://gitee.com/vincent-zyu/cyber-light-bulb)
+[![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/VincentZyuApps/cyber-bulb)
+[![Gitee](https://img.shields.io/badge/Gitee-C71D23?style=for-the-badge&logo=gitee&logoColor=white)](https://gitee.com/vincent-zyu/cyber-light-bulb)
 
-[![PyPI 包版本 / Package Version](https://img.shields.io/pypi/v/cyber-bulb?style=for-the-badge&logo=pypi&logoColor=white&label=Package%20Version&color=3775A9)](https://pypi.org/project/cyber-bulb/) [![支持的 Python 版本 / Supported Python Versions](https://img.shields.io/pypi/pyversions/cyber-bulb?style=for-the-badge&logo=python&logoColor=white)](https://pypi.org/project/cyber-bulb/) [![PyQt5](https://img.shields.io/badge/PyQt5-41CD52?style=for-the-badge&logo=qt&logoColor=white)](https://pypi.org/project/PyQt5/)
+[![PyPI 包版本 / Package Version](https://img.shields.io/pypi/v/cyber-bulb?style=for-the-badge&logo=pypi&logoColor=white&label=Package%20Version&labelColor=3775A9&color=FFD43B)](https://pypi.org/project/cyber-bulb/)
+[![支持的 Python 版本 / Supported Python Versions](https://img.shields.io/pypi/pyversions/cyber-bulb?style=for-the-badge&logo=python&logoColor=white&labelColor=3775A9&color=FFD43B)](https://pypi.org/project/cyber-bulb/)
+[![PyQt5 版本 / PyQt5 Version](https://img.shields.io/badge/PyQt5-5.15.11-41CD52?style=for-the-badge&logo=qt&logoColor=white&labelColor=3775A9)](https://pypi.org/project/PyQt5/)
 
 一个使用 PyQt5 编写的七段数码管时钟，支持三种外观、响应式控制和多种段级动画。 / A PyQt5 seven-segment clock with three styles, responsive controls, and segment-level animations.
 
@@ -14,14 +17,12 @@
 ### 🌙 夜晚模式 / Dark Mode
 ![赛博灯泡夜晚模式 / Cyber Bulb dark mode](https://raw.githubusercontent.com/VincentZyuApps/cyber-bulb/main/docs/images/preview/preview.dark.png)
 ## 📦 从 PyPI 安装 / Install from PyPI
-
 ```bash
 uv venv
 uv pip install cyber-bulb
 uv run cyber-bulb
 ```
 ## 🛠️ 从源码运行 / Run from Source
-
 ```bash
 uv sync
 uv run cyber-bulb
@@ -35,8 +36,7 @@ uv run cyber-bulb
 | `--colon-animation {none,blink,pulse,double,alternate}` | `blink` | 设置冒号动画。 / Set the colon animation. |
 | `--no-theme-transition`, `--no-style-transition` | 关闭 / Off | 分别禁用主题或外观渐变。 / Disable theme or style transitions. |
 | `--width`, `--height <像素 / pixels>` | `777 × 666` | 设置初始窗口尺寸。 / Set the initial window dimensions. |
-| `-h`, `--help` | 无 / None | 显示命令帮助。 / Show command help. |
-
+| `-V`, `--V`, `--version`<br>`-h`, `--help` | 无 / None | 显示版本或命令帮助。 / Show version or command help. |
 > ### 📚 uv 官方安装文档 / Official uv Installation Guide
 >
 > uv还是太好用了，已经不用pyenv了，推荐使用。 / uv works so well that I no longer use pyenv. Highly recommended.

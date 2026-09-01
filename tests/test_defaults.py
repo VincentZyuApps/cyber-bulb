@@ -46,6 +46,7 @@ class DefaultConsistencyTests(unittest.TestCase):
             "| `--colon-animation {none,blink,pulse,double,alternate}` | `blink` |",
             "| `--no-theme-transition`, `--no-style-transition` | 关闭 / Off |",
             "| `--width`, `--height <像素 / pixels>` | `777 × 666` |",
+            "`-V`, `--V`, `--version`",
         ):
             self.assertIn(fragment, readme)
 

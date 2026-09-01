@@ -1,5 +1,7 @@
+import signal
 import sys
 from collections.abc import Sequence
+from types import FrameType
 
 from PyQt5.QtWidgets import QApplication
 
@@ -7,6 +9,27 @@ from .cli import parse_runtime_options
 from .window import DigitalClock
 
 __all__ = ["DigitalClock", "main"]
+
+INTERRUPT_EXIT_CODE = 130
+INTERRUPT_MESSAGE = "👋 收到 Ctrl+C，正在退出。 / Ctrl+C received, exiting."
+
+
+def _run_event_loop(app: QApplication) -> int:
+    interrupted = False
+
+    def handle_interrupt(_signum: int, _frame: FrameType | None) -> None:
+        nonlocal interrupted
+        if interrupted:
+            return
+        interrupted = True
+        print(INTERRUPT_MESSAGE, flush=True)
+        app.exit(INTERRUPT_EXIT_CODE)
+
+    previous_handler = signal.signal(signal.SIGINT, handle_interrupt)
+    try:
+        return app.exec_()
+    finally:
+        signal.signal(signal.SIGINT, previous_handler)
 
 
 def main(argv: Sequence[str] | None = None) -> int:
@@ -24,4 +47,4 @@ def main(argv: Sequence[str] | None = None) -> int:
         height=options.height,
     )
     clock.show()
-    return app.exec_()
+    return _run_event_loop(app)

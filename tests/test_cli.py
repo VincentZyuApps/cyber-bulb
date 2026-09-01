@@ -1,6 +1,9 @@
 import contextlib
 import io
 import unittest
+from importlib.metadata import PackageNotFoundError
+from importlib.metadata import version as distribution_version
+from unittest.mock import patch
 
 from cyber_bulb.cli import parse_runtime_options
 from cyber_bulb.effects import ColonEffect, DigitEffect
@@ -9,6 +12,50 @@ from cyber_bulb.theme import ThemeMode
 
 
 class RuntimeOptionsTests(unittest.TestCase):
+    def test_version_aliases_exit_without_runtime_options(self):
+        for alias in ("-V", "--V", "--version"):
+            with self.subTest(alias=alias):
+                output = io.StringIO()
+                with contextlib.redirect_stdout(output), self.assertRaises(
+                    SystemExit
+                ) as caught:
+                    parse_runtime_options([alias])
+
+                self.assertEqual(caught.exception.code, 0)
+                self.assertEqual(
+                    output.getvalue().strip(),
+                    f"cyber-bulb {distribution_version('cyber-bulb')}",
+                )
+
+    def test_help_lists_version(self):
+        output = io.StringIO()
+        with contextlib.redirect_stdout(output), self.assertRaises(SystemExit) as caught:
+            parse_runtime_options(["--help"])
+
+        self.assertEqual(caught.exception.code, 0)
+        help_text = output.getvalue()
+        for fragment in (
+            "用法 / Usage:",
+            "💡 赛博灯泡 / Cyber Bulb",
+            "⚙️ 选项 / Options",
+            "-V, --V, --version",
+            "📖 显示帮助并退出。 / Show help and exit.",
+            "🌓 设置初始主题",
+            "✨ 设置数字动画",
+            "↔️ 设置初始窗口宽度",
+        ):
+            self.assertIn(fragment, help_text)
+
+    def test_uninstalled_source_reports_unknown_version(self):
+        output = io.StringIO()
+        with patch(
+            "cyber_bulb.cli.distribution_version",
+            side_effect=PackageNotFoundError,
+        ), contextlib.redirect_stdout(output), self.assertRaises(SystemExit):
+            parse_runtime_options(["-V"])
+
+        self.assertEqual(output.getvalue().strip(), "cyber-bulb unknown")
+
     def test_runtime_defaults(self):
         options, qt_args = parse_runtime_options([])
 

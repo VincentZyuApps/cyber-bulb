@@ -69,10 +69,76 @@ jobs:
           QT_QPA_PLATFORM: offscreen
         run: uv run --locked --python "${{ matrix.python-version }}" python -m unittest discover -s tests -v
 
+  platform:
+    name: ${{ matrix.name }}
+    needs: check
+    if: needs.check.outputs.should_build == 'true'
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: Windows / Python 3.14
+            os: windows-latest
+            python-version: "3.14"
+          - name: macOS ARM64 / Python 3.14
+            os: macos-15-arm64
+            python-version: "3.14"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v10.0.1
+        with:
+          enable-cache: true
+
+      - name: Install Python
+        run: uv python install "${{ matrix.python-version }}"
+
+      - name: Sync project
+        run: uv sync --locked --python "${{ matrix.python-version }}"
+
+      - name: Verify Qt runtime
+        run: uv run --locked --python "${{ matrix.python-version }}" python -c "from importlib.metadata import version; actual = version('PyQt5-Qt5'); parsed = tuple(map(int, actual.split('.'))); print(f'PyQt5-Qt5 {actual}'); assert (5, 15, 2) <= parsed < (5, 16)"
+
+      - name: Verify CLI version
+        run: uv run --locked --python "${{ matrix.python-version }}" cyber-bulb --version
+
+      - name: Run unit and offscreen GUI tests
+        env:
+          QT_QPA_PLATFORM: offscreen
+        run: uv run --locked --python "${{ matrix.python-version }}" python -m unittest discover -s tests -v
+
+  test-gate:
+    name: Test gate
+    needs: [check, compatibility, platform]
+    if: always() && needs.check.outputs.should_build == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Require every test job to pass
+        env:
+          COMPATIBILITY_RESULT: ${{ needs.compatibility.result }}
+          PLATFORM_RESULT: ${{ needs.platform.result }}
+        run: |
+          python - <<'PY'
+          import os
+
+          results = {
+              "compatibility": os.environ["COMPATIBILITY_RESULT"],
+              "platform": os.environ["PLATFORM_RESULT"],
+          }
+          failed = [name for name, result in results.items() if result != "success"]
+          if failed:
+              details = ", ".join(f"{name}={results[name]}" for name in failed)
+              raise SystemExit(f"test gate failed: {details}")
+          print("test gate passed")
+          PY
+
   build:
     name: Build distributions
-    needs: [check, compatibility]
-    if: needs.check.outputs.should_build == 'true'
+    needs: [check, test-gate]
+    if: needs.check.outputs.should_build == 'true' && needs.test-gate.result == 'success'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -98,8 +164,8 @@ jobs:
 
   publish-pypi:
     name: Publish to PyPI
-    needs: [check, build]
-    if: needs.check.outputs.should_publish == 'true' && needs.build.result == 'success'
+    needs: [check, test-gate, build]
+    if: needs.check.outputs.should_publish == 'true' && needs.test-gate.result == 'success' && needs.build.result == 'success'
     runs-on: ubuntu-latest
     environment:
       name: pypi
