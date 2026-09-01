@@ -14,8 +14,12 @@ def main(argv: Sequence[str] | None = None) -> int:
     options, qt_args = parse_runtime_options(runtime_args)
     app = QApplication([sys.argv[0], *qt_args])
     clock = DigitalClock(
-        animation_enabled=options.animation_enabled,
+        transition_enabled=options.transition_enabled,
         initial_mode=options.theme_mode,
+        digit_effect=options.digit_effect,
+        colon_effect=options.colon_effect,
+        segment_style=options.segment_style,
+        style_transition_enabled=options.style_transition_enabled,
         width=options.width,
         height=options.height,
     )

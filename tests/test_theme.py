@@ -1,6 +1,5 @@
 import unittest
 
-from cyber_bulb.titlebar import colorref
 from cyber_bulb.theme import (
     DARK_THEME,
     LIGHT_THEME,
@@ -8,6 +7,7 @@ from cyber_bulb.theme import (
     blend_theme,
     contrasting_text_color,
 )
+from cyber_bulb.titlebar import colorref
 
 
 class ThemeTests(unittest.TestCase):

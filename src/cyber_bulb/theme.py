@@ -5,6 +5,8 @@ from enum import Enum
 from PyQt5.QtGui import QColor
 from PyQt5.QtWidgets import QApplication
 
+from .labels import LabelParts
+
 
 class ThemeMode(str, Enum):
     SYSTEM = "system"
@@ -12,10 +14,10 @@ class ThemeMode(str, Enum):
     DARK = "dark"
 
 
-THEME_MODE_LABELS = {
-    ThemeMode.SYSTEM: "🖥️ 跟随系统 / Follow System",
-    ThemeMode.LIGHT: "☀️ 白天模式 / Light Mode",
-    ThemeMode.DARK: "🌙 黑夜模式 / Dark Mode",
+THEME_MODE_NAMES = {
+    ThemeMode.SYSTEM: LabelParts("🖥️", "系统", "System"),
+    ThemeMode.LIGHT: LabelParts("☀️", "白天", "Light"),
+    ThemeMode.DARK: LabelParts("🌙", "黑夜", "Dark"),
 }
 
 
