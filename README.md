@@ -13,7 +13,6 @@
 ![赛博灯泡白天模式 / Cyber Bulb light mode](https://raw.githubusercontent.com/VincentZyuApps/cyber-bulb/main/docs/images/preview/preview.light.png)
 ### 🌙 夜晚模式 / Dark Mode
 ![赛博灯泡夜晚模式 / Cyber Bulb dark mode](https://raw.githubusercontent.com/VincentZyuApps/cyber-bulb/main/docs/images/preview/preview.dark.png)
-
 ## 📦 从 PyPI 安装 / Install from PyPI
 
 ```bash
@@ -21,7 +20,6 @@ uv venv
 uv pip install cyber-bulb
 uv run cyber-bulb
 ```
-
 ## 🛠️ 从源码运行 / Run from Source
 
 ```bash
@@ -35,6 +33,8 @@ uv run cyber-bulb
 |:---|:---|:---|
 | `--theme {system,light,dark}` | `system` | 设置初始主题模式。 / Set the initial theme mode. |
 | `--no-animation` | 关闭 / Off | 仅在本次运行中禁用主题渐变。 / Disable theme transitions for this run only. |
+| `--width <像素 / pixels>` | `777` | 设置初始窗口宽度。 / Set the initial window width. |
+| `--height <像素 / pixels>` | `666` | 设置初始窗口高度。 / Set the initial window height. |
 | `-h`, `--help` | 无 / None | 显示命令帮助。 / Show command help. |
 
 > ### 📚 uv 官方安装文档 / Official uv Installation Guide

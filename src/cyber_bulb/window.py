@@ -8,6 +8,7 @@ from PyQt5.QtWidgets import (
     QWidget,
 )
 
+from .dimensions import DEFAULT_HEIGHT, DEFAULT_WIDTH
 from .titlebar import NativeTitleBar
 from .theme import (
     THEME_MODE_LABELS,
@@ -27,6 +28,8 @@ class DigitalClock(QWidget):
         self,
         animation_enabled: bool = True,
         initial_mode: ThemeMode = ThemeMode.SYSTEM,
+        width: int = DEFAULT_WIDTH,
+        height: int = DEFAULT_HEIGHT,
     ):
         super().__init__()
         self.animation_enabled = animation_enabled
@@ -41,7 +44,7 @@ class DigitalClock(QWidget):
         self._transition_end = self._current_theme
         self._native_title_bar = NativeTitleBar(self)
 
-        self._init_ui()
+        self._init_ui(width, height)
         self._theme_animation = QVariantAnimation(self)
         self._theme_animation.setDuration(TRANSITION_DURATION_MS)
         self._theme_animation.setEasingCurve(QEasingCurve.InOutCubic)
@@ -49,11 +52,11 @@ class DigitalClock(QWidget):
         self._theme_animation.finished.connect(self._finish_transition)
         self.update_style()
 
-    def _init_ui(self) -> None:
+    def _init_ui(self, width: int, height: int) -> None:
         self.setWindowTitle(
-            "数字时钟 - 晶体管显示 / Digital Clock - Transistor Display"
+            "💡 数字时钟 - 晶体管显示 / Digital Clock - Transistor Display"
         )
-        self.resize(400, 250)
+        self.resize(width, height)
 
         main_layout = QVBoxLayout()
 

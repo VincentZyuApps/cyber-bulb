@@ -42,8 +42,10 @@ class DigitalClockTests(unittest.TestCase):
 
         self.assertEqual(
             clock.windowTitle(),
-            "数字时钟 - 晶体管显示 / Digital Clock - Transistor Display",
+            "💡 数字时钟 - 晶体管显示 / Digital Clock - Transistor Display",
         )
+        self.assertEqual(clock.size().width(), 777)
+        self.assertEqual(clock.size().height(), 666)
         target_mode = ThemeMode.LIGHT if clock.is_dark_mode else ThemeMode.DARK
         clock.set_mode(target_mode)
 
@@ -91,6 +93,20 @@ class DigitalClockTests(unittest.TestCase):
         self.assertTrue(clock.is_dark_mode)
         self.assertEqual(clock._current_theme, DARK_THEME)
         self.assertEqual(clock.mode_button.text(), THEME_MODE_LABELS[ThemeMode.DARK])
+
+    def test_initial_dimensions_can_be_selected(self):
+        for width, height in (
+            (480, 360),
+            (600, 450),
+            (777, 666),
+            (900, 720),
+            (1100, 800),
+        ):
+            with self.subTest(width=width, height=height):
+                clock = DigitalClock(width=width, height=height)
+                self.windows.append(clock)
+                self.assertEqual(clock.size().width(), width)
+                self.assertEqual(clock.size().height(), height)
 
 
 if __name__ == "__main__":

@@ -23,6 +23,7 @@
 - 主题按钮按跟随系统、白天、黑夜循环，按钮文案必须为 emoji、中文、英文的顺序。 / Cycle System, Light, and Dark modes with emoji, Chinese, then English button labels.
 - `--no-animation` 仅禁用当前进程的渐变。 / `--no-animation` disables transitions for the current process only.
 - `--theme {system,light,dark}` 设置初始模式，默认跟随系统且仅对当前进程有效。 / `--theme {system,light,dark}` selects the process-only initial mode and defaults to System.
+- `--width` 与 `--height` 设置正整数初始尺寸，默认 `777 × 666`。 / `--width` and `--height` set positive initial dimensions, defaulting to `777 × 666`.
 - 禁止通过 QSettings、注册表、配置文件或环境变量持久化运行选项。 / Never persist runtime options via QSettings, registry, config files, or environment variables.
 - 保留原生标题栏及其拖动、缩放、最大化和 Snap Layout 行为。 / Preserve native title-bar dragging, resizing, maximizing, and Snap Layout.
 - Windows 使用 DWM 同步标题栏颜色；不支持的平台必须安全降级。 / Use DWM for title-bar colors on Windows and safely no-op elsewhere.

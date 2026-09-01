@@ -1,6 +1,6 @@
 [project]
 name = "cyber-bulb"
-version = "0.1.0b1"
+version = "0.2.0b2"
 description = "A PyQt5 digital clock with light and dark modes."
 readme = "README.md"
 requires-python = ">=3.10"

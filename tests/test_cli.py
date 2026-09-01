@@ -10,6 +10,8 @@ class RuntimeOptionsTests(unittest.TestCase):
 
         self.assertTrue(options.animation_enabled)
         self.assertEqual(options.theme_mode, ThemeMode.SYSTEM)
+        self.assertEqual(options.width, 777)
+        self.assertEqual(options.height, 666)
         self.assertEqual(qt_args, [])
 
     def test_no_animation_is_process_only(self):
@@ -28,6 +30,18 @@ class RuntimeOptionsTests(unittest.TestCase):
             with self.subTest(mode=mode):
                 options, _ = parse_runtime_options(["--theme", mode.value])
                 self.assertEqual(options.theme_mode, mode)
+
+    def test_initial_dimensions_can_be_selected(self):
+        options, _ = parse_runtime_options(
+            ["--width", "1200", "--height", "800"]
+        )
+
+        self.assertEqual(options.width, 1200)
+        self.assertEqual(options.height, 800)
+
+    def test_dimensions_must_be_positive(self):
+        with self.assertRaises(SystemExit):
+            parse_runtime_options(["--width", "0"])
 
 
 if __name__ == "__main__":

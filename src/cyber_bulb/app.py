@@ -16,6 +16,8 @@ def main(argv: Sequence[str] | None = None) -> int:
     clock = DigitalClock(
         animation_enabled=options.animation_enabled,
         initial_mode=options.theme_mode,
+        width=options.width,
+        height=options.height,
     )
     clock.show()
     return app.exec_()
