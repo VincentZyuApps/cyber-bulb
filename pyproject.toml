@@ -1,7 +1,7 @@
 [project]
 name = "cyber-bulb"
-version = "0.3.0rc1"
-description = "A PyQt5 seven-segment clock with themes and animated display effects."
+version = "0.3.0"
+description = "💡🕒 一个支持主题与动态显示效果的 PyQt5 七段数码管时钟。 | 💡🕒 A PyQt5 seven-segment clock with themes and animated display effects."
 readme = "README.md"
 requires-python = ">=3.10"
 authors = [

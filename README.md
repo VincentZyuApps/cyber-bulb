@@ -5,6 +5,7 @@
 
 一个使用 PyQt5 编写的七段数码管时钟，支持三种外观、响应式控制和多种段级动画。 / A PyQt5 seven-segment clock with three styles, responsive controls, and segment-level animations.
 
+> 本仓库同时也是使用 uv 管理 Python 项目并通过 GitHub Actions 发布至 PyPI 的参考模板。 / This repository is also a reference template for managing a Python project with uv and publishing it to PyPI through GitHub Actions.
 ## 🖼️ 运行预览 / Preview
 ![赛博灯泡动画演示 / Cyber Bulb animated demo](https://raw.githubusercontent.com/VincentZyuApps/cyber-bulb/main/docs/images/preview/preview.demo.gif)
 ### ☀️ 白天模式 / Light Mode
@@ -24,7 +25,6 @@ uv run cyber-bulb
 uv sync
 uv run cyber-bulb
 ```
-
 ## ⚙️ 运行参数 / Runtime Options
 
 | 参数 / Option | 默认值 / Default | 说明 / Description |
