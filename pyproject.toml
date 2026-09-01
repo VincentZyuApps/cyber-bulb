@@ -44,10 +44,11 @@ packages = ["src/cyber_bulb"]
 [tool.hatch.build.targets.sdist]
 include = [
     "/src/cyber_bulb",
-    "/bulb.py",
     "/pyproject.toml",
     "/README.md",
+    "/AGENTS.md",
     "/requirements.txt",
+    "/tests",
     "/uv.lock",
     "/docs/images/preview/*.png",
 ]

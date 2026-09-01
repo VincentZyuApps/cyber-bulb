@@ -64,23 +64,10 @@ jobs:
       - name: Sync project
         run: uv sync --locked --python "${{ matrix.python-version }}"
 
-      - name: Test package and GUI
+      - name: Run unit and offscreen GUI tests
         env:
           QT_QPA_PLATFORM: offscreen
-        run: |
-          uv run --locked --python "${{ matrix.python-version }}" python - <<'PY'
-          from PyQt5.QtWidgets import QApplication
-          from cyber_bulb import DigitalClock
-
-          app = QApplication([])
-          clock = DigitalClock()
-          assert clock.windowTitle() == "数字时钟 - 晶体管显示"
-          assert clock.is_dark_mode is False
-          clock.toggle_mode()
-          assert clock.is_dark_mode is True
-          clock.close()
-          app.quit()
-          PY
+        run: uv run --locked --python "${{ matrix.python-version }}" python -m unittest discover -s tests -v
 
   build:
     name: Build distributions

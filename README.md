@@ -2,7 +2,6 @@
 
 [![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/VincentZyuApps/cyber-bulb)
 [![Gitee](https://img.shields.io/badge/Gitee-C71D23?style=for-the-badge&logo=gitee&logoColor=white)](https://gitee.com/vincent-zyu/cyber-light-bulb)
-
 [![PyPI 包版本 / Package Version](https://img.shields.io/pypi/v/cyber-bulb?style=for-the-badge&logo=pypi&logoColor=white&label=Package%20Version&color=3775A9)](https://pypi.org/project/cyber-bulb/)
 [![支持的 Python 版本 / Supported Python Versions](https://img.shields.io/pypi/pyversions/cyber-bulb?style=for-the-badge&logo=python&logoColor=white)](https://pypi.org/project/cyber-bulb/)
 
@@ -10,9 +9,10 @@
 
 ## 🖼️ 运行预览 / Preview
 
-| 🌙 夜晚模式 / Dark Mode | ☀️ 白天模式 / Light Mode |
-|:---:|:---:|
-| ![赛博灯泡夜晚模式 / Cyber Bulb dark mode](https://raw.githubusercontent.com/VincentZyuApps/cyber-bulb/main/docs/images/preview/preview.dark.png) | ![赛博灯泡白天模式 / Cyber Bulb light mode](https://raw.githubusercontent.com/VincentZyuApps/cyber-bulb/main/docs/images/preview/preview.light.png) |
+### ☀️ 白天模式 / Light Mode
+![赛博灯泡白天模式 / Cyber Bulb light mode](https://raw.githubusercontent.com/VincentZyuApps/cyber-bulb/main/docs/images/preview/preview.light.png)
+### 🌙 夜晚模式 / Dark Mode
+![赛博灯泡夜晚模式 / Cyber Bulb dark mode](https://raw.githubusercontent.com/VincentZyuApps/cyber-bulb/main/docs/images/preview/preview.dark.png)
 
 ## 📦 从 PyPI 安装 / Install from PyPI
 
@@ -29,7 +29,13 @@ uv sync
 uv run cyber-bulb
 ```
 
-也可以运行兼容入口 `uv run python bulb.py`。 / You can also use the compatible launcher: `uv run python bulb.py`.
+## ⚙️ 运行参数 / Runtime Options
+
+| 参数 / Option | 默认值 / Default | 说明 / Description |
+|:---|:---|:---|
+| `--theme {system,light,dark}` | `system` | 设置初始主题模式。 / Set the initial theme mode. |
+| `--no-animation` | 关闭 / Off | 仅在本次运行中禁用主题渐变。 / Disable theme transitions for this run only. |
+| `-h`, `--help` | 无 / None | 显示命令帮助。 / Show command help. |
 
 > ### 📚 uv 官方安装文档 / Official uv Installation Guide
 >
