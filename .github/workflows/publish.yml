@@ -82,7 +82,7 @@ jobs:
             os: windows-latest
             python-version: "3.14"
           - name: macOS ARM64 / Python 3.14
-            os: macos-15-arm64
+            os: macos-15
             python-version: "3.14"
     steps:
       - name: Checkout
