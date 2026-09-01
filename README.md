@@ -1,6 +1,7 @@
 # 💡 赛博灯泡 / Cyber Bulb
 
 [![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/VincentZyuApps/cyber-bulb) [![Gitee](https://img.shields.io/badge/Gitee-C71D23?style=for-the-badge&logo=gitee&logoColor=white)](https://gitee.com/vincent-zyu/cyber-light-bulb)
+
 [![PyPI 包版本 / Package Version](https://img.shields.io/pypi/v/cyber-bulb?style=for-the-badge&logo=pypi&logoColor=white&label=Package%20Version&color=3775A9)](https://pypi.org/project/cyber-bulb/) [![支持的 Python 版本 / Supported Python Versions](https://img.shields.io/pypi/pyversions/cyber-bulb?style=for-the-badge&logo=python&logoColor=white)](https://pypi.org/project/cyber-bulb/)
 
 一个使用 PyQt5 编写的七段数码管时钟，支持三种外观、响应式控制和多种段级动画。 / A PyQt5 seven-segment clock with three styles, responsive controls, and segment-level animations.
@@ -26,7 +27,6 @@ uv sync
 uv run cyber-bulb
 ```
 ## ⚙️ 运行参数 / Runtime Options
-
 | 参数 / Option | 默认值 / Default | 说明 / Description |
 |:---|:---|:---|
 | `--theme {system,light,dark}` | `system` | 设置初始主题模式。 / Set the initial theme mode. |
