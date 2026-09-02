@@ -3,3 +3,7 @@
 *.yml linguist-language=YAML linguist-detectable -linguist-documentation -linguist-vendored -linguist-generated
 *.yaml linguist-language=YAML linguist-detectable -linguist-documentation -linguist-vendored -linguist-generated
 *.toml linguist-language=TOML linguist-detectable -linguist-documentation -linguist-vendored -linguist-generated
+uv.lock linguist-language=TOML linguist-detectable -linguist-documentation -linguist-vendored -linguist-generated
+.gitattributes linguist-language=gitattributes linguist-detectable -linguist-documentation -linguist-vendored -linguist-generated
+.gitignore linguist-language=ignore linguist-detectable -linguist-documentation -linguist-vendored -linguist-generated
+requirements.txt linguist-language=pip-requirements linguist-detectable -linguist-documentation -linguist-vendored -linguist-generated
